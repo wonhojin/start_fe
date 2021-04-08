@@ -1,4 +1,4 @@
-console.log('app');
+//console.log('app');
 
 /* //Create
 var toods =['운동'];
@@ -41,10 +41,33 @@ else {
     console.log('2');
 } */
 
-var count = [10,20,30,40,50,60,70,100];
+/* var count = [10,20,30,40,50,60,70,100];
 
 const result = count.reduce(function add(sum, currValue) {
   return sum + currValue;
-});
+}, 0);
+const average = result / count.length;
 
-console.log(result); 
+console.log(average);  */
+
+function sumInput() {
+
+    let numbers = [];
+  
+    while (true) {
+  
+      let value = prompt("숫자를 입력해 주 세요.", 0);
+  
+      if (value === "" || value === null || !isFinite(value)) break;
+  
+      numbers.push(+value);
+    }
+  
+    let sum = 0;
+    for (let number of numbers) {
+      sum += number;
+    }
+    return sum;
+  }
+  
+sumInput();
