@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Header from './Header';
 
 function App() {
+  const [todo, setTodo] = useState('');
+  const [todos, setTodos] = useState([]);
+
+  function handleChange(event){
+    setTodo(event.target.value);
+  }
+  function handleSubmit(event){
+    event.preventDefault();
+    const newTodos = [...todos];
+    newTodos.push(todo);
+    setTodos(newTodos);
+    setTodo('');
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+     <div className="container">
+      <header>
+        <Header/>
+        <form className="new-task" onSubmit={handleSubmit}>
+          <input           
+            name="text"
+            placeholder="할일을 입력하세요"
+            value={todo}
+            onChange = {handleChange}
+          />
+        </form>
       </header>
-    </div>
+      <div id="result">
+        {
+          todos.map(todo => {
+            return (<li>{todo}</li>);
+          })
+        }
+      </div>
+      </div>
   );
 }
 
