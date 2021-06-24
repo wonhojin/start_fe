@@ -13,5 +13,5 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/quiz1.html',
     }),
-  ],
+  ], 
 };
